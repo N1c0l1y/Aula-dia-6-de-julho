@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mundo Sem Internet - Uma Jornada Analógica</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="offline-overlay" class="offline-overlay hidden">
+        <div class="static-noise"></div>
+        <div class="overlay-content">
+            <i class="fa-solid fa-triangle-exclamation warning-icon"></i>
+            <h2>CONEXÃO INTERROMPIDA</h2>
+            <p id="simulation-text">Sinal perdido. Carregando realidade analógica...</p>
+        </div>
+    </div>
+
+    <header class="main-header">
+        <div class="container header-container">
+            <a href="#" class="logo">Mundo<span>.Off</span></a>
+            <button class="menu-toggle" aria-label="Abrir menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#inicio" class="nav-link">Início</a></li>
+                    <li><a href="#apagao" class="nav-link">O Apagão</a></li>
+                    <li><a href="#impactos" class="nav-link">Impactos</a></li>
+                    <li><a href="#curiosidades" class="nav-link">Era Pré-Digital</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="inicio" class="hero-section">
+            <div class="container hero-container">
+                <h1 class="scroll-animate">E se o mundo ficasse <span class="highlight">Off-line</span> para sempre?</h1>
+                <p class="scroll-animate">Imagine acordar hoje e descobrir que a rede mundial de computadores desapareceu. Sem mensagens, sem nuvem, sem GPS. Você saberia como viver?</p>
+                <div class="hero-actions scroll-animate">
+                    <a href="#apagao" class="btn btn-primary">Iniciar Jornada</a>
+                    <button id="simular-btn" class="btn btn-secondary"><i class="fa-solid fa-plug"></i> Desconectar Rede</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="apagao" class="section-padding section-dark">
+            <div class="container text-center">
+                <h2 class="scroll-animate">O Grande Apagão</h2>
+                <p class="section-subtitle scroll-animate">O dia em que a tela piscou e não voltou.</p>
+                
+                <div class="story-box scroll-animate">
+                    <p>Nas primeiras 24 horas, o silêncio seria ensurdecedor. Bilhões de smartphones se transformariam instantaneamente em pedaços inúteis de vidro e metal. Sem notificações, sem feeds para rolar, sem validação instantânea. O que começou como uma falha técnica logo se revelaria permanente: a infraestrutura global da internet entrou em colapso total.</p>
+                    <p>O pânico inicial daria lugar a uma constatação profunda. Fomos forçados a olhar para cima, para os lados e redescobrir o espaço físico e as pessoas ao nosso redor.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="impactos" class="section-padding">
+            <div class="container">
+                <h2 class="text-center scroll-animate">Impactos no Cotidiano</h2>
+                <p class="section-subtitle text-center scroll-animate">Como as engrenagens da sociedade moderna reagiriam sem a rede.</p>
+                
+                <div class="grid-impactos">
+                    <article class="card-impacto scroll-animate">
+                        <div class="card-icon"><i class="fa-solid fa-comments"></i></div>
+                        <h3>Comunicação</h3>
+                        <p>O fim das mensagens instantâneas e redes sociais. Voltaríamos às cartas, telefonia fixa com fios e encontros marcados com dias de antecedência nas praças centrais.</p>
+                    </article>
+
+                    <article class="card-impacto scroll-animate">
+                        <div class="card-icon"><i class="fa-solid fa-chart-line"></i></div>
+                        <h3>Economia</h3>
+                        <p>Bancos digitais e criptomoedas evaporariam. O comércio global sofreria um colapso imediato, forçando a volta do dinheiro em espécie, cheques e contabilidade manual.</p>
+                    </article>
+
+                    <article class="card-impacto scroll-animate">
+                        <div class="card-icon"><i class="fa-solid fa-film"></i></div>
+                        <h3>Entretenimento</h3>
+                        <p>Sem streamings de vídeo ou música. Os cinemas lotariam, os discos de vinil, CDs e fitas cassete seriam tesouros e as conversas de bar substituiriam as telas.</p>
+                    </article>
+
+                    <article class="card-impacto scroll-animate">
+                        <div class="fa-solid fa-route card-icon"></div>
+                        <h3>Navegação e Mapas</h3>
+                        <p>Sem GPS ou aplicativos de carona. Perder-se voltaria a ser comum. A sociedade precisaria reaprender a ler mapas de papel e pedir direções para estranhos na rua.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="curiosidades" class="section-padding section-dark">
+            <div class="container">
+                <h2 class="text-center scroll-animate">A Vida na Era Pré-Digital</h2>
+                <p class="section-subtitle text-center scroll-animate">Como a humanidade resolvia grandes problemas antes dos anos 90.</p>
+                
+                <div class="timeline">
+                    <div class="timeline-item scroll-animate">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h3>Pesquisas e Trabalhos</h3>
+                            <p>Em vez do Google, utilizavam-se gigantescas coleções de livros chamadas <strong>Enciclopédias</strong> (como a Barsa). As bibliotecas eram os únicos templos do conhecimento.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item scroll-animate">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h3>Memórias Compartilhadas</h3>
+                            <p>As fotos não iam para o feed. Eram tiradas com filmes de rolo limitados (12, 24 ou 36 poses), reveladas dias depois e guardadas em álbuns físicos para mostrar às visitas.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item scroll-animate">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h3>Encontros Agendados</h3>
+                            <p>Não dava para mandar um "estou chegando". Se você marcasse às 15h embaixo do relógio da praça, precisava estar lá. O atraso exigia paciência e confiança mútua.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container footer-container">
+            <p>&copy; 2026 Mundo Sem Internet. Um manifesto sobre a vida analógica.</p>
+            <div class="footer-links">
+                <a href="#" class="share-link" id="fake-share"><i class="fa-solid fa-share-nodes"></i> Compartilhar via Carta</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+</html>
