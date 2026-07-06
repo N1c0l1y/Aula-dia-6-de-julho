@@ -1,0 +1,510 @@
+/* ==========================================================================
+   Variáveis Globais e Reset
+   ========================================================================== */
+:root {
+    --bg-dark: #0a0f1d;
+    --bg-card: #131b2e;
+    --bg-light: #182238;
+    --text-primary: #e2e8f0;
+    --text-muted: #94a3b8;
+    --accent: #ffb000; /* Âmbar Analógico */
+    --accent-glow: rgba(255, 176, 0, 0.3);
+    --font-sans: 'Space Grotesk', sans-serif;
+    --font-mono: 'Space Mono', monospace;
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-primary);
+    font-family: var(--font-sans);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.text-center { text-align: center; }
+.hidden { display: none !important; }
+
+/* ==========================================================================
+   Componentes Reutilizáveis
+   ========================================================================== */
+.section-padding {
+    padding: 80px 0;
+}
+
+.section-dark {
+    background-color: var(--bg-light);
+}
+
+h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    letter-spacing: -0.05em;
+}
+
+.section-subtitle {
+    font-family: var(--font-mono);
+    color: var(--accent);
+    font-size: 1rem;
+    margin-bottom: 50px;
+    text-transform: uppercase;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 28px;
+    font-family: var(--font-mono);
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    border-radius: 4px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+}
+
+.btn-primary {
+    background-color: var(--accent);
+    color: var(--bg-dark);
+    border: 2px solid var(--accent);
+    box-shadow: 0 4px 14px var(--accent-glow);
+}
+
+.btn-primary:hover {
+    background-color: transparent;
+    color: var(--accent);
+    box-shadow: 0 4px 20px rgba(255, 176, 0, 0.1);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--text-primary);
+    border: 2px solid var(--text-muted);
+}
+
+.btn-secondary:hover {
+    border-color: var(--text-primary);
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* ==========================================================================
+   Cabeçalho e Menu
+   ========================================================================== */
+.main-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    background-color: rgba(10, 15, 29, 0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    transition: var(--transition-smooth);
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    text-decoration: none;
+    font-family: var(--font-mono);
+}
+
+.logo span {
+    color: var(--accent);
+}
+
+.menu-toggle {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 24px;
+    height: 18px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 110;
+}
+
+.menu-toggle .bar {
+    width: 100%;
+    height: 2px;
+    background-color: var(--text-primary);
+    transition: var(--transition-smooth);
+}
+
+/* Estado Ativo do Menu Hambúrguer */
+.menu-toggle.active .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+.menu-toggle.active .bar:nth-child(2) {
+    opacity: 0;
+}
+.menu-toggle.active .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+.main-nav {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 80%;
+    max-width: 300px;
+    height: 100vh;
+    background-color: var(--bg-card);
+    padding: 100px 40px;
+    transition: var(--transition-smooth);
+    box-shadow: -10px 0 30px rgba(0,0,0,0.5);
+}
+
+.main-nav.active {
+    right: 0;
+}
+
+.main-nav ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.nav-link {
+    font-family: var(--font-mono);
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: var(--transition-smooth);
+}
+
+.nav-link:hover {
+    color: var(--accent);
+    padding-left: 5px;
+}
+
+/* ==========================================================================
+   Hero Section
+   ========================================================================== */
+.hero-section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding-top: 70px;
+    background: radial-gradient(circle at 80% 20%, rgba(255, 176, 0, 0.05), transparent 40%);
+}
+
+.hero-container h1 {
+    font-size: 3rem;
+    line-height: 1.1;
+    margin-bottom: 20px;
+}
+
+.hero-container h1 .highlight {
+    color: var(--accent);
+    text-shadow: 0 0 20px var(--accent-glow);
+}
+
+.hero-container p {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    max-width: 600px;
+    margin-bottom: 40px;
+}
+
+.hero-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* ==========================================================================
+   O Grande Apagão
+   ========================================================================== */
+.story-box {
+    background-color: var(--bg-card);
+    border-left: 4px solid var(--accent);
+    padding: 30px;
+    text-align: left;
+    max-width: 800px;
+    margin: 0 auto;
+    border-radius: 0 8px 8px 0;
+}
+
+.story-box p {
+    margin-bottom: 20px;
+    color: var(--text-muted);
+    font-size: 1.05rem;
+}
+
+.story-box p:last-child {
+    margin-bottom: 0;
+}
+
+/* ==========================================================================
+   Impactos no Cotidiano
+   ========================================================================== */
+.grid-impactos {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+}
+
+.card-impacto {
+    background-color: var(--bg-card);
+    padding: 40px 30px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.02);
+    transition: var(--transition-smooth);
+}
+
+.card-impacto:hover {
+    transform: translateY(-5px);
+    border-color: rgba(255, 176, 0, 0.2);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.card-icon {
+    font-size: 2rem;
+    color: var(--accent);
+    margin-bottom: 20px;
+}
+
+.card-impacto h3 {
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+}
+
+.card-impacto p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+}
+
+/* ==========================================================================
+   Linha do Tempo
+   ========================================================================== */
+.timeline {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    padding-left: 30px;
+    border-left: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 50px;
+}
+
+.timeline-item:last-child {
+    margin-bottom: 0;
+}
+
+.timeline-dot {
+    position: absolute;
+    left: -41px;
+    top: 5px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: var(--bg-dark);
+    border: 4px solid var(--accent);
+}
+
+.timeline-content h3 {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+    color: var(--text-primary);
+}
+
+.timeline-content p {
+    color: var(--text-muted);
+}
+
+/* ==========================================================================
+   Rodapé
+   ========================================================================== */
+.main-footer {
+    background-color: var(--bg-dark);
+    padding: 40px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.footer-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    text-align: center;
+}
+
+.share-link {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 700;
+    transition: var(--transition-smooth);
+}
+
+.share-link:hover {
+    text-decoration: underline;
+}
+
+/* ==========================================================================
+   Overlay de Efeito Monocromático / Estática
+   ========================================================================== */
+.offline-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #111;
+    z-index: 200;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.overlay-content {
+    text-align: center;
+    z-index: 210;
+    padding: 20px;
+}
+
+.warning-icon {
+    font-size: 4rem;
+    color: #ff3333;
+    margin-bottom: 20px;
+    animation: pulse 1s infinite alternate;
+}
+
+.overlay-content h2 {
+    font-family: var(--font-mono);
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+.overlay-content p {
+    font-family: var(--font-mono);
+    color: #aaa;
+}
+
+/* Ruído Analógico Estático simulado via gradiente linear */
+.static-noise {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.15),
+        rgba(0, 0, 0, 0.15) 1px,
+        rgba(255, 255, 255, 0.05) 1px,
+        rgba(255, 255, 255, 0.05) 2px
+    );
+    opacity: 0.3;
+    pointer-events: none;
+}
+
+/* Efeito Monocromático de Simulação aplicado ao body */
+body.simulacao-analogica {
+    filter: grayscale(100%) contrast(120%);
+    transition: filter 0.5s ease;
+}
+
+@keyframes pulse {
+    from { opacity: 0.5; }
+    to { opacity: 1; }
+}
+
+/* ==========================================================================
+   Animações de Scroll
+   ========================================================================== */
+.scroll-animate {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.scroll-animate.animated {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ==========================================================================
+   Media Queries (Responsividade)
+   ========================================================================== */
+@media (min-width: 576px) {
+    .hero-actions {
+        flex-direction: row;
+    }
+}
+
+@media (min-width: 768px) {
+    h2 { font-size: 3rem; }
+    .hero-container h1 { font-size: 4.5rem; }
+    
+    .menu-toggle { display: none; }
+    
+    .main-nav {
+        position: static;
+        width: auto;
+        height: auto;
+        background-color: transparent;
+        padding: 0;
+        box-shadow: none;
+    }
+    
+    .main-nav ul {
+        flex-direction: row;
+        gap: 35px;
+    }
+    
+    .nav-link {
+        font-size: 0.95rem;
+    }
+    
+    .grid-impactos {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .footer-container {
+        flex-direction: row;
+        justify-content: space-between;
+        text-align: left;
+    }
+}
+
+@media (min-width: 992px) {
+    .grid-impactos {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
